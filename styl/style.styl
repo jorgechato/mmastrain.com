@@ -1,13 +1,19 @@
+@import url(//fonts.googleapis.com/css?family=Inconsolata)
+@import url(//fonts.googleapis.com/css?family=Open+Sans)
+
 body
 	font-size 16px
-	font-family Helvetica Neue
+	font-family: 'Open Sans', sans-serif;
+	font-weight 400
 
 header
 	background #222 url("../img/studio.jpg") center  no-repeat
+	background-size 100% auto
 	background-size cover
 	height 250px
 	margin-bottom 180px
 	text-align center
+	width 100%
 
 	.logo
 		background url("../img/logo.png") center  no-repeat
@@ -21,7 +27,9 @@ header
 		z-index 2
 
 	h1
-		font-family Ayuthaya
+		display block
+		font-family 'Inconsolata'
+		font-weight 400
 
 		a
 			text-decoration none
@@ -37,38 +45,45 @@ header
 
 nav
 	background rgba(255,255,255,0.5)
+	border-bottom solid rgba(0,0,0,0.7) 1px
 	font-size 1.3em
+	line-height 27px
+	overflow-x auto
 	text-align center
+	white-space nowrap
 
 	ul
-		a
-			color #111
-			text-decoration none
-			
-			li
-				display inline-block
-				margin-right 0.5em
-				vertical-align top
-				padding-bottom 7px
+		li
+			display inline-block
+			margin-right 0.8em
+			vertical-align top
+
+			a
+				color #111
+				padding-bottom 19px
+				text-decoration none
+				width 100%
 
 				&:hover
-					border-bottom solid #222 2px
+					border-bottom solid rgba(0,0,0,0.7) 3px
 
 section
 	max-width 590px
 	margin 0 auto
-	padding-top 2.5em
+	padding 2.5em 0.5em 0 0.5em
 	position relative
 
 .sobremi
 	
 	figure
-		margin 0 1em 1em 0
+		margin 0 
 		max-width 195px
-		padding 0
+		padding 0.6em 1em 0 0
 		float left
 
 		img
+			border-radius 0.25em
+			box-shadow 0px 0px 10px rgba(0,0,0,0.3)
 			width 100%
 
 	article
