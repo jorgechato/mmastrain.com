@@ -1,10 +1,52 @@
+@font-face {
+	font-family: 'iconreg';
+	src:url('../fonts/iconreg.eot?-n0nvqs');
+	src:url('../fonts/iconreg.eot?#iefix-n0nvqs') format('embedded-opentype'),
+		url('../fonts/iconreg.woff?-n0nvqs') format('woff'),
+		url('../fonts/iconreg.ttf?-n0nvqs') format('truetype'),
+		url('../fonts/iconreg.svg?-n0nvqs#iconreg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 @import url(//fonts.googleapis.com/css?family=Inconsolata)
 @import url(//fonts.googleapis.com/css?family=Open+Sans)
 
+
+border-radius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	border-radius arguments
+
+ transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	border-transform arguments
+
+ transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	border-transition arguments
+
+
 body
 	font-size 16px
-	font-family: 'Open Sans', sans-serif;
+	font-family 'Open Sans'
 	font-weight 400
+
+footer
+	background #000100
+	color white
+	height 75px
+	margin 100px 0 0 0
+	padding 8px 0
+	text-align center
+	width 100%
+
+	span
+		
+		img
+			width 70px
 
 header
 	background #222 url("../img/studio.jpg") center  no-repeat
@@ -44,7 +86,7 @@ header
 				content "Mª"
 
 nav
-	background rgba(255,255,255,0.5)
+	background rgba(255,255,255,0.9)
 	border-bottom solid rgba(0,0,0,0.7) 1px
 	font-size 1.3em
 	line-height 27px
@@ -68,12 +110,31 @@ nav
 					border-bottom solid rgba(0,0,0,0.7) 3px
 
 section
-	max-width 590px
-	margin 0 auto
-	padding 2.5em 0.5em 0 0.5em
+	height 100vh
 	position relative
 
+.git
+	color rgba(0,0,0,0.3)
+	font-family 'Open Sans'
+	text-decoration none
+
+	.author
+		color rgba(0,0,0,0.3)
+		float right
+		font-family 'iconreg'
+		font-size .9em	
+		padding-right 1em
+
+		&:before
+			content "-"
+			font-size 1.3em
+
+		&:after
+			content "-  \e602"
+			font-size 1.3em
+
 .sobremi
+	height 100%
 	
 	figure
 		margin 0 
@@ -95,15 +156,48 @@ section
 		vertical-align top
 
 
+.libros
+	background #222 url("../img/studio.jpg") center  no-repeat
+	background-size 100% auto
+	background-size cover
+	position relative
 
+	div
+		background rgba(255,255,255,0.5)
+		border-radius 0.5em
+		height 150px
+		position relative
+		top 4em
+		left 10em
+		width 12em
 
+.nav--clone
+	position fixed
+	top 0
+	left 0
+	width 100%
+	line-height 27px
+	overflow-x auto
+	text-align center
+	white-space nowrap
+	z-index 100
+	/*transition -100%*/
+	transform translateY(-100%)
+	/*animation*/
+	transition all 300ms ease-in-out
 
+.nav--stick
+	transform translateY(0%)
 
+.notas
+	background red
 
-
-
-
-
+.sobremi
+.lector
+.notas
+	margin 0 auto 4em auto
+	max-width 590px
+	padding 70px 0.5em 0 0.5em
 
 
 
