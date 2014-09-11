@@ -18,12 +18,12 @@ border-radius()
 	-moz-border-radius arguments
 	border-radius arguments
 
- transform()
+transform()
 	-webkit-transform arguments
 	-moz-transform arguments
 	border-transform arguments
 
- transition()
+transition()
 	-webkit-transition arguments
 	-moz-transition arguments
 	border-transition arguments
@@ -47,6 +47,9 @@ footer
 		
 		img
 			width 70px
+
+h2
+	padding-top 70px
 
 header
 	background #222 url("../img/studio.jpg") center  no-repeat
@@ -157,19 +160,54 @@ section
 
 
 .libros
-	background #222 url("../img/studio.jpg") center  no-repeat
+	background #222 url("../img/blur.jpg") center  no-repeat
 	background-size 100% auto
 	background-size cover
+	padding-top 80px
 	position relative
 
-	div
+	.container
 		background rgba(255,255,255,0.5)
 		border-radius 0.5em
-		height 150px
-		position relative
+		/*position relative
 		top 4em
-		left 10em
-		width 12em
+		left 10em*/
+		height 220px
+		margin-bottom 15px
+		overflow hidden
+		position absolute
+		width 360px
+
+		.books-list
+
+			span
+				height 175px
+				width 114px
+				display block
+				background url("../img/lomo-small.png") no-repeat
+				background-size 130px 195px
+				z-index 2
+				padding 36px 0 0 16px
+				position absolute
+				
+			.cover
+				height 168px
+				width 111px
+				z-index 1
+				border-color #F0F0F0
+				outline-color #F0F0F0
+				position absolute
+				top 24.5px
+				left 10px
+
+			a
+				display block
+				height 168px
+				width 111px
+				position absolute
+				top 24.5px
+				left 10px
+				z-index 3
 
 .nav--clone
 	position fixed
