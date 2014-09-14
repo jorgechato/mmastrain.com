@@ -9,9 +9,6 @@
 	font-style: normal;
 }
 
-@import url(//fonts.googleapis.com/css?family=Inconsolata)
-@import url(//fonts.googleapis.com/css?family=Open+Sans)
-
 
 border-radius()
 	-webkit-border-radius arguments
@@ -31,7 +28,7 @@ transition()
 
 body
 	font-size 16px
-	font-family 'Open Sans'
+	font-family: 'Open Sans', sans-serif;
 	font-weight 400
 
 footer
@@ -73,8 +70,7 @@ header
 
 	h1
 		display block
-		font-family 'Inconsolata'
-		font-weight 400
+		font-weight 700
 
 		a
 			text-decoration none
@@ -89,10 +85,10 @@ header
 				content "Mª"
 
 nav
-	background rgba(255,255,255,0.9)
+	background rgba(255,255,255,0.93)
 	border-bottom solid rgba(0,0,0,0.7) 1px
 	font-size 1.3em
-	line-height 27px
+	line-height 29px
 	overflow-x auto
 	text-align center
 	white-space nowrap
@@ -105,7 +101,7 @@ nav
 
 			a
 				color #111
-				padding-bottom 19px
+				padding-bottom 18px
 				text-decoration none
 				width 100%
 
@@ -118,7 +114,7 @@ section
 
 .git
 	color rgba(0,0,0,0.3)
-	font-family 'Open Sans'
+	font-family: 'Open Sans', sans-serif;
 	text-decoration none
 
 	.author
@@ -138,6 +134,7 @@ section
 
 .sobremi
 	height 100%
+	//overflow-y auto
 	
 	figure
 		margin 0 
@@ -163,58 +160,71 @@ section
 	background #222 url("../img/blur.jpg") center  no-repeat
 	background-size 100% auto
 	background-size cover
+	overflow-y auto
 	padding-top 80px
-	position relative
+	text-align center
 
 	.container
 		background rgba(255,255,255,0.5)
 		border-radius 0.5em
-		/*position relative
-		top 4em
-		left 10em*/
-		height 220px
-		margin-bottom 15px
-		overflow hidden
-		position absolute
-		width 360px
+		margin 0 8px 15px 8px
+		overflow-y auto
+		padding-bottom 16px
 
 		.books-list
+			position relative
+			float left
 
 			span
-				height 175px
-				width 114px
+				height 270px
+				width 180px
 				display block
 				background url("../img/lomo-small.png") no-repeat
-				background-size 130px 195px
+				background-size 196px 290px
 				z-index 2
 				padding 36px 0 0 16px
-				position absolute
+				position relative
+				float left
 				
 			.cover
-				height 168px
-				width 111px
+				display block
+				height 250px
+				width 166px
 				z-index 1
 				border-color #F0F0F0
 				outline-color #F0F0F0
 				position absolute
-				top 24.5px
-				left 10px
+				top 36px
+				left 16px
 
 			a
 				display block
-				height 168px
-				width 111px
+				height 250px
+				width 166px
 				position absolute
-				top 24.5px
-				left 10px
+				top 36px
+				left 16px
 				z-index 3
+
+	.content
+		padding-top 36px
+		margin 0 8px
+		text-align left
+
+		h3
+			color rgba(black,.7)
+			font-size 1.5em
+			margin-top 0
+			padding-top 0
+			padding-bottom .5em
+			text-align center
 
 .nav--clone
 	position fixed
 	top 0
 	left 0
 	width 100%
-	line-height 27px
+	line-height 29px
 	overflow-x auto
 	text-align center
 	white-space nowrap
@@ -228,7 +238,32 @@ section
 	transform translateY(0%)
 
 .notas
-	background red
+	height 100%
+
+	article
+		h2
+			color rgb(187,36,42)
+
+		time
+
+			&:after
+				content "    -"
+
+		.texto
+			text-align left
+
+		.love
+			color rgba(black,.5)
+			float right
+			margin-top 1em
+
+			&:after
+				content "    \e603"
+				font-family 'iconreg'
+				font-size 2em
+
+			&:hover
+				color rgb(187,36,42)
 
 .sobremi
 .lector
@@ -237,10 +272,19 @@ section
 	max-width 590px
 	padding 70px 0.5em 0 0.5em
 
+.scroll-nav
+	overflow hidden
+	width 0px
+	height 0px
 
+@media screen and (min-width: 768px)
 
-
-
+	.libros
+		.container
+			display inline-block
+			vertical-align top
+			width 550px
+			height 500px
 
 
 

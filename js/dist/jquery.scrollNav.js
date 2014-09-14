@@ -30,9 +30,9 @@
       subSections: false,
       sectionElem: 'section',
       className: 'scroll-nav',
-      showHeadline: true,
+      showHeadline: false,
       headlineText: 'Scroll To',
-      showTopLink: true,
+      showTopLink: false,
       topLinkText: 'Top',
       fixedMargin: 40,
       scrollOffset: 40,
@@ -132,7 +132,7 @@
 
       var $headline = $('<span />', {'class': S.settings.className + '__heading', text: S.settings.headlineText});
       var $wrapper  = $('<div />', {'class': S.settings.className + '__wrapper'});
-      var $nav      = $('<nav />', {'class': S.settings.className, 'role': 'navigation'});
+      var $nav      = $('<div />', {'class': S.settings.className, 'role': 'navigation'});
       var $nav_list = $('<ol />', {'class': S.settings.className + '__list'});
 
       $.each(sections, function(i) {
