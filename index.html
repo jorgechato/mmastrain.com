@@ -89,6 +89,25 @@
 
 	<section class="lector" id="reader">
 		<div></div>
+		<main class="comments">
+			<div class="comment">
+				lo mejor de la hija del mar es...
+			</div>
+			<h4>Felipe</h4>
+			<time>28 Agosto 2014</time>
+			<span class="love"><strong>150</strong></span>
+		</main>
+		<form class="formulario">
+			<span>
+				<input type="text" name="name" id="comment-name" required="" value="Tu nombre (obligatorio)" onblur="if(this.value=='')this.value='Tu nombre (obligatorio)'" onfocus="if(this.value=='Tu nombre (obligatorio)')this.value=''">
+
+				<input type="email" name="email" id="comment-email" required="" value="Tu email (obligatorio)" onblur="if(this.value=='')this.value='Tu email (obligatorio)'" onfocus="if(this.value=='Tu email (obligatorio)')this.value=''">
+
+				<textarea name="message" id="comment-message" cols="88" rows="8" required="" onblur="if(this.value=='')this.value='Tu mensaje'" onfocus="if(this.value=='Tu mensaje')this.value=''">Tu mensaje</textarea>
+
+				<button class="submit" type="submit" name="submit" value="Publicar">Publicar</button>
+			</span>
+		</form>
 	</section>
 
 	<a href="//github.com/orggue" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>

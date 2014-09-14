@@ -9,6 +9,7 @@
 	font-style: normal;
 }
 
+rojo=rgb(187,36,42)
 
 border-radius()
 	-webkit-border-radius arguments
@@ -155,6 +156,75 @@ section
 	article
 		vertical-align top
 
+.lector
+	div
+		margin-top 70px
+
+	.comments
+		.comment
+			font-size 2em
+
+		h4
+		time
+			display inline-block
+			vertical-align top
+
+		h4
+			&:before
+				content "—  "
+
+		time
+			margin-top 1.33em
+
+		.love
+			color rgba(black,.5)
+			float right
+			margin-top 3em
+
+			&:after
+				content "    \e603"
+				font-family 'iconreg'
+				font-size 2em
+
+			&:hover
+				color rojo
+
+	.formulario
+		margin-top 140px
+
+		span
+			max-width 590px
+
+			input
+			textarea
+				padding 14px 10px
+				border 1px solid #eeeeee
+				color #ABADB7
+				background-color #eeeeee
+				width 95%
+				margin 8px 0
+				border-radius 5px
+
+			.submit
+				background rojo
+				border 0
+				border-radius 0
+				color white
+				float right
+				font-weight 200
+				margin-top 1em
+				padding 6px
+				position relative
+				width 150px
+
+				&:before
+					color black
+					content "\e600"
+					font-family 'iconreg'
+					font-size 3.5em
+					position absolute
+					top -.2em
+					left -4px
 
 .libros
 	background #222 url("../img/blur.jpg") center  no-repeat
@@ -242,7 +312,7 @@ section
 
 	article
 		h2
-			color rgb(187,36,42)
+			color rojo
 
 		time
 
@@ -263,7 +333,7 @@ section
 				font-size 2em
 
 			&:hover
-				color rgb(187,36,42)
+				color rojo
 
 .sobremi
 .lector
