@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Miguel Mª Astrain</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="../static/styl/normalize.css"/>
+	<link rel="stylesheet" href="../static/styl/style.css"/>
+	<link rel="shortcut icon" href="../static/img/logo.png">
+</head>
+
+<body>
+
+	<header id="aboutme">
+		<div class="logo"></div>
+		<h1><a href="/">Miguel<span class="ma"></span>Astrain</a></h1>
+	</header>
+
+	<nav class="navigation" id="nav">
+		<ul>
+			<li><a href="#aboutme">Sobre mi</a></li>
+			<li><a href="#books">Libros</a></li>
+			<li><a href="#notes">Notas</a></li>
+			<li><a href="#reader">Lector</a></li>
+		</ul>
+	</nav>
+
+	<section class="sobremi">
+		<figure><img src="../static/img/author.jpg"></figure>
+		<article>
+			<p>La Comunidad Econ&oacute;mica Europea (CEE) fue una organizaci&oacute;n internacional creada mediante la firma del Tratado de Roma el 25 de marzo de 1957, por algunos pa&iacute;ses europeos, con la finalidad de constituir un mercado com&uacute;n. </p>
+
+			<p>Desde mucho antes, se estaba hablando de Europa. Los estudiantes zaragozanos se mostraron altamente interesados en el tema de Europa, a trav&eacute;s de conferecias y cursos especiales, que trataban de reunir lo m&aacute;s interesante del tema, desde las distintas facultades y escuelas universitarias. </p>
+		<a id="showHere"></a>
+			<p>El C&iacute;rculo de Estudios Europeos, bastantes a&ntilde;os antes de la firma del tratado, cre&oacute; la revista oral Europa que celebr&oacute; su primera charla literaria el 21 de abril de 1952. Era obra de un grupo de estudiantes con inquietudes literarias que nos reun&iacute;amos para manifestar al p&uacute;blico lo que de una manera u otra nos preocupaba. Era una experiencia interesante. Veintidos n&uacute;meros salieron al p&uacute;blico en salas de conferencia que sol&iacute;an llenarse, atra&iacute;do el p&uacute;blico por los temas que se ofrec&iacute;an. </p>
+			<p>Los redactores eran numerosos. Yo al frente de ellos. Los temas que trat&eacute; fueron variados: &ldquo;El teatro de Calder&oacute;n&rdquo;, &ldquo;Lisboa 1900&rdquo;, &ldquo;Cr&iacute;tica de libros&rdquo;, &ldquo;Glasgow de noche&rdquo;, &ldquo;Poetas de Europa: William Auld&rdquo;, &ldquo;De S&eacute;neca y la felicidad&rdquo;, &ldquo;El buen samaritano&rdquo;, &ldquo;Los santos europeos de nuestro siglo&rdquo;, &ldquo;Comentarios a un poeta escoc&eacute;s&rdquo;, &ldquo;Europe, hora cero&rdquo;, &ldquo;Roma&rdquo;, &ldquo;El teatro de Henrik Ibsen&rdquo;, &ldquo;Poetas de Europa, Heinrich Heine&rdquo;, &ldquo;Euryante, de Weber&rdquo;, &ldquo;Teatro europeo, Oscar Wilde&rdquo;, &ldquo;El teatro lorquiano&rdquo;, &ldquo;Manet el luminoso&rdquo;.</p>
+			<p>Temas variados, girando siempre en torno a estudios art&iacute;stico-literarios que supon&iacute;an nuestro fuerte en aquellos tiempos. El teatro, la poes&iacute;a, la m&uacute;sica ofrecida en discos de alta calidad, documentales cinematogr&aacute;ficos obtenidos de diversas embajadas, en fin todo cuanto significaba cultura a nivel europeo. La revista oral Europa supuso, en fin, una apertura a todo lo que entonces significaba cultura.</p>
+		</article>
+	</section>
+
+	<section class="libros" id="books">
+			{% if libros %}
+		    
+		    {% for libro in libros %}
+		<div class="container">
+			<div class="books-list">
+				<span></span>
+				<img class="cover" src="http://placehold.it/166x250/000/fff&text={{libro.titulo}}" alt="{{libro.titulo}}" title="{{libro.titulo}}"/>
+				<a href="{{libro.url}}"></a>
+			</div>
+			<article class="content">
+				<h3 class="title">{{libro.titulo|upper}}</h3>
+				<div class="sinopsis">
+					{{libro.sinopsis}}
+				</div>
+				<button></button>
+			</article>
+		</div>
+			{% endfor %}
+			{% else %}
+			    NO HAY LIBROS GUARDADOS
+			{% endif %}
+	</section>
+
+	<main class="notas" id="notes">
+		{% if notas %}
+		{% for nota in notas %}
+		<article>
+
+			<h2>{{nota.titulo|upper}}</h2>
+			<strong><time>{{nota.tymestamp|date:"d M Y"}}</time></strong>
+			<div class="texto">
+				{{nota.comentario}}
+			</div>
+			<a href="{% url "loveE" nota.pk %}" class="lover"><span class="love"><strong>{{nota.votos|default:"0"}}</strong></span></a>
+
+		</article>
+		{% endfor %}
+		{% else %}
+		    NO HAY NOTAS GUARDADAS
+		{% endif %}
+
+	</main>
+
+	<section class="lector" id="reader">
+			{% if lectores %}
+	    	{% for lector in lectores %}
+		<div class="comments">
+			<div class="comment">
+				"{{lector.comentario}}"
+			</div>
+			<h4>{{lector.usuario|title}}</h4>
+			<time>hace: {{lector.tymestamp|timesince}}</time>
+			<a href="{% url "loveL" lector.pk %}" class="lover"><span class="love"><strong>{{lector.votos|default:"0"}}</strong></span></a>
+		</div>
+			{% endfor %}
+			{% else %}
+			    NO HAY COMENTARIOS GUARDADOS
+			{% endif %}
+		{% if not request.user.is_authenticated %}
+		<form class="formulario" method="POST">
+			<p class="aviso">Registrate para comentar y votar a tus compañeros</p>
+			<span>
+			{% csrf_token %}
+
+				<input type="text" name="username" id="comment-name" required="" placeholder="Tu nombre"/>
+
+				<input type="password" name="password" id="comment-password" required="" placeholder="Tu contraseña"/>
+
+				<input class="recuerdame" type="checkbox" name="remember" value="remember"/>Recuerdame</br>
+
+				<button class="submit" type="submit" name="submit" value="Publicar">Iniciar sesión</button>
+
+				<a href=""><button class="button" type="button" name="button" value="Publicar">Registrarme</button></a>
+			</span>
+			<p class="olvido">*Si has olvidado la contraseña, <a href=""><strong>RECUPERALA</strong></a></p>
+		</form>
+		{% else %}
+			<p class="aviso"></p>
+
+			<a href="/add" class="largo"><button class="submit pluma" type="submit" name="submit" value="Publicar">Hola <strong>{{request.user|title}}</strong>, ¿Listo para publicar?</button></a>
+
+			<p class="cerrarSesion"><a href="/logout">Cerrar sesión</a></p>
+		{% endif %}
+	</section>
+
+	<a href="//github.com/orggue/mmastrain.com" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>
+
+	<footer>
+		<a href="//www.amazon.com/s/ref=la_B00JJ5FR1Y_B00JJ5FR1Y_sr?rh=i%3Abooks&field-author=Miguel+Mª+Astra%C3%ADn&sort=relevance&ie=UTF8&qid=1410275844"><span class="amazon"><img src="../static/img/amazon_white.png"></span></a>
+		<a href="//es.wikipedia.org/wiki/Miguel_Mar%C3%ADa_Astra%C3%ADn_Bada"><span class="wikipedia"><img src="../static/img/wikipedia.ico"></span></a>
+	</footer>
+
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/vendor/headhesive.js"></script>
+
+<script type="text/javascript" src="../static/js/main.js"></script>
+
+</html>

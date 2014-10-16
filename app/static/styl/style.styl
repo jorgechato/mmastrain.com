@@ -26,6 +26,8 @@ transition()
 	-moz-transition arguments
 	border-transition arguments
 
+::selection
+	background-color rgba(rojo, 0.7)
 
 body
 	font-size 16px
@@ -87,9 +89,9 @@ header
 
 nav
 	background rgba(255,255,255,0.93)
-	border-bottom solid rgba(0,0,0,0.7) 1px
+	border-bottom solid rgba(0,0,0,1) 1px
 	font-size 1.3em
-	line-height 29px
+	//line-height 29px
 	overflow-x auto
 	text-align center
 	white-space nowrap
@@ -110,7 +112,7 @@ nav
 					border-bottom solid rgba(0,0,0,0.7) 3px
 
 section
-	height 100vh
+	//height 100vh
 	position relative
 
 .git
@@ -157,12 +159,15 @@ section
 		vertical-align top
 
 .lector
-	div
-		margin-top 70px
+	height 100vh
 
 	.comments
+		box-shadow -0.8px 6px 5px rgba(0,0,0,0.06)
+		margin-top 40px
+		padding-bottom 30px
+		
 		.comment
-			font-size 2em
+			font-size 1.4em
 
 		h4
 		time
@@ -176,24 +181,75 @@ section
 		time
 			margin-top 1.33em
 
-		.love
-			color rgba(black,.5)
-			float right
-			margin-top 3em
+		.lover
+				text-decoration none
+				
+			.love
+				float right
+				margin-top 3em
+				color rgba(black,.5)
 
-			&:after
-				content "    \e603"
+				&:after
+					content "    \e603"
+					font-family 'iconreg'
+					font-size 2em
+
+				&:hover
+					color rojo
+
+	.aviso
+		margin-top 140px
+		
+	.largo
+
+		.submit
+			width 100%
+			background rojo
+			border 0
+			color white
+			font-weight 200
+			font-size 1.3em
+			margin 1em auto 0 auto
+			padding 10px 0
+			position relative
+			border-radius 5px
+
+			&:before
+				color black
+				content "\e600"
 				font-family 'iconreg'
-				font-size 2em
+				font-size 3.5em
+				position absolute
+				top -.2em
+				left -4px
+	
+	.cerrarSesion
+		font-size 0.75em
+		text-align center
 
-			&:hover
-				color rojo
+		a
+			color rojo
+			text-decoration none
 
 	.formulario
 		margin-top 140px
 
+		.aviso
+			font-size 1em
+			text-align center
+
+		.olvido
+			font-size 0.75em
+			a
+				color rojo
+				text-decoration none
+
 		span
 			max-width 590px
+
+			.recuerdame
+				margin-right 1em
+				width auto
 
 			input
 			textarea
@@ -205,17 +261,33 @@ section
 				margin 8px 0
 				border-radius 5px
 
+			.button
+				background rgba(255,255,255,0.2)
+				border 2px solid rojo
+				border-radius 0
+				color rojo
+				font-weight 200
+				margin 1em auto 0 auto
+				padding 6px
+				position relative
+				width 200px
+				border-radius 5px
+				text-decoration none
+
 			.submit
 				background rojo
 				border 0
 				border-radius 0
 				color white
-				float right
 				font-weight 200
-				margin-top 1em
+				margin 1em auto 0 auto
 				padding 6px
 				position relative
-				width 150px
+				width 200px
+				border-radius 5px
+
+			.pluma
+				float right
 
 				&:before
 					color black
@@ -230,6 +302,7 @@ section
 	background #222 url("../img/blur.jpg") center  no-repeat
 	background-size 100% auto
 	background-size cover
+	height 100vh
 	overflow-y auto
 	padding-top 80px
 	text-align center
@@ -308,7 +381,7 @@ section
 	transform translateY(0%)
 
 .notas
-	height 100%
+	height 100vh
 
 	article
 		h2
@@ -317,23 +390,27 @@ section
 		time
 
 			&:after
-				content "    -"
+				content "    —"
 
 		.texto
+			margin-top 1em
 			text-align left
 
-		.love
-			color rgba(black,.5)
-			float right
-			margin-top 1em
+		.lover
+			text-decoration none
 
-			&:after
-				content "    \e603"
-				font-family 'iconreg'
-				font-size 2em
+			.love
+				color rgba(black,.5)
+				float right
+				padding-top 1em
 
-			&:hover
-				color rojo
+				&:after
+					content "    \e603"
+					font-family 'iconreg'
+					font-size 2em
+
+				&:hover
+					color rojo
 
 .sobremi
 .lector
@@ -346,6 +423,12 @@ section
 	overflow hidden
 	width 0px
 	height 0px
+
+.formPublicar
+	height 100%
+	padding-bottom 240px
+	.formulario
+		margin-top 0px
 
 @media screen and (min-width: 768px)
 

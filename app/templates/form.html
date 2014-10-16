@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Miguel Mª Astrain</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="../static/styl/normalize.css"/>
+	<link rel="stylesheet" href="../static/styl/style.css"/>
+	<link rel="shortcut icon" href="../static/img/logo.png">
+</head>
+
+<body>
+
+	<header id="aboutme">
+		<div class="logo"></div>
+		<h1><a href="/">Miguel<span class="ma"></span>Astrain</a></h1>
+	</header>
+
+	<nav class="navigation" id="nav">
+		<ul>
+			<li><a href="/#aboutme">Sobre mi</a></li>
+			<li><a href="/#books">Libros</a></li>
+			<li><a href="/#notes">Notas</a></li>
+			<li><a href="/#reader">Lector</a></li>
+		</ul>
+	</nav>
+
+	<section class="lector formPublicar" id="reader">
+	<form class="formulario" method="post">
+			<span>
+				<!--<textarea name="message" id="comment-message" cols="88" rows="8" required="" placeholder="Tu mensaje"></textarea>-->
+				
+				{% csrf_token %}
+				{{ form.as_p }}
+
+				<button class="submit pluma" type="submit" name="submit" value="Publicar">Publicar</button>
+			</span>
+		</form>
+	</section>
+
+	<a href="//github.com/orggue/mmastrain.com" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>
+
+	<footer>
+		<a href="//www.amazon.com/s/ref=la_B00JJ5FR1Y_B00JJ5FR1Y_sr?rh=i%3Abooks&field-author=Miguel+Mª+Astra%C3%ADn&sort=relevance&ie=UTF8&qid=1410275844"><span class="amazon"><img src="../static/img/amazon_white.png"></span></a>
+		<a href="//es.wikipedia.org/wiki/Miguel_Mar%C3%ADa_Astra%C3%ADn_Bada"><span class="wikipedia"><img src="../static/img/wikipedia.ico"></span></a>
+	</footer>
+
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="../static/js/main.js"></script>
+
+</html>

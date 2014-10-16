@@ -1,5 +1,5 @@
 $(document).on("ready",startNav);
-$(document).on("ready",linkNotes);
+//$(document).on("ready",linkNotes);
 
 function startNav(){
 
@@ -15,7 +15,7 @@ function startNav(){
 
 	var banner = new Headhesive('#nav', options);
 }
-
+/*
 function linkNotes(){
 	$('.notas').scrollNav();
-}
+}*/
