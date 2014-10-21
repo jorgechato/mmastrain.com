@@ -7,9 +7,10 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="../static/styl/normalize.css"/>
-	<link rel="stylesheet" href="../static/styl/style.css"/>
-	<link rel="shortcut icon" href="../static/img/logo.png">
+    {% load static from staticfiles %}
+	<link rel="stylesheet" href="{% static "styl/normalize.css" %}"/>
+	<link rel="stylesheet" href="{% static "styl/style.css" %}"/>
+	<link rel="shortcut icon" href="{% static "img/logo.png" %}">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 	</nav>
 
 	<section class="sobremi">
-		<figure><img src="../static/img/author.jpg"></figure>
+		<figure><img src="{% static "img/author.jpg" %}"></figure>
 		<article>
 			<p>La Comunidad Econ&oacute;mica Europea (CEE) fue una organizaci&oacute;n internacional creada mediante la firma del Tratado de Roma el 25 de marzo de 1957, por algunos pa&iacute;ses europeos, con la finalidad de constituir un mercado com&uacute;n. </p>
 
@@ -130,15 +131,15 @@
 	<a href="//github.com/orggue/mmastrain.com" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>
 
 	<footer>
-		<a href="//www.amazon.com/s/ref=la_B00JJ5FR1Y_B00JJ5FR1Y_sr?rh=i%3Abooks&field-author=Miguel+Mª+Astra%C3%ADn&sort=relevance&ie=UTF8&qid=1410275844"><span class="amazon"><img src="../static/img/amazon_white.png"></span></a>
-		<a href="//es.wikipedia.org/wiki/Miguel_Mar%C3%ADa_Astra%C3%ADn_Bada"><span class="wikipedia"><img src="../static/img/wikipedia.ico"></span></a>
+		<a href="//www.amazon.com/s/ref=la_B00JJ5FR1Y_B00JJ5FR1Y_sr?rh=i%3Abooks&field-author=Miguel+Mª+Astra%C3%ADn&sort=relevance&ie=UTF8&qid=1410275844"><span class="amazon"><img src="{% static "img/amazon_white.png" %}"></span></a>
+		<a href="//es.wikipedia.org/wiki/Miguel_Mar%C3%ADa_Astra%C3%ADn_Bada"><span class="wikipedia"><img src="{% static "img/wikipedia.ico" %}"></span></a>
 	</footer>
 
 </body>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="../static/js/vendor/headhesive.js"></script>
+<script type="text/javascript" src="{% static "js/vendor/headhesive.js" %}"></script>
 
-<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="{% static "js/main.js" %}"></script>
 
 </html>

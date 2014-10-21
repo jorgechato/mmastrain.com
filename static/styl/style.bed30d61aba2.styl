@@ -1,0 +1,443 @@
+@font-face {
+	font-family: 'iconreg';
+	src:url('../fonts/iconreg.eot?-n0nvqs');
+	src:url('../fonts/iconreg.eot?#iefix-n0nvqs') format('embedded-opentype'),
+		url('../fonts/iconreg.woff?-n0nvqs') format('woff'),
+		url('../fonts/iconreg.ttf?-n0nvqs') format('truetype'),
+		url('../fonts/iconreg.svg?-n0nvqs#iconreg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+rojo=rgb(187,36,42)
+
+border-radius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	border-radius arguments
+
+transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	border-transform arguments
+
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	border-transition arguments
+
+::selection
+	background-color rgba(rojo, 0.7)
+
+body
+	font-size 16px
+	font-family: 'Open Sans', sans-serif;
+	font-weight 400
+
+footer
+	background #000100
+	color white
+	height 75px
+	margin 100px 0 0 0
+	padding 8px 0
+	text-align center
+	width 100%
+
+	span
+		
+		img
+			width 70px
+
+h2
+	padding-top 70px
+
+header
+	background #222 url("../img/studio.jpg") center  no-repeat
+	background-size 100% auto
+	background-size cover
+	height 250px
+	margin-bottom 180px
+	text-align center
+	width 100%
+
+	.logo
+		background url("../img/logo.png") center  no-repeat
+		background-size cover
+		height 250px
+		opacity 1
+		margin 0 auto
+		position relative
+		top 40px
+		width 187.05px
+		z-index 2
+
+	h1
+		display block
+		font-weight 700
+
+		a
+			text-decoration none
+			color #111
+
+		.ma
+			font-size 0.5em
+			position relative
+			top -0.8em
+
+			&:before
+				content "Mª"
+
+nav
+	background rgba(255,255,255,0.93)
+	border-bottom solid rgba(0,0,0,1) 1px
+	font-size 1.3em
+	//line-height 29px
+	overflow-x auto
+	text-align center
+	white-space nowrap
+
+	ul
+		li
+			display inline-block
+			margin-right 0.8em
+			vertical-align top
+
+			a
+				color #111
+				padding-bottom 18px
+				text-decoration none
+				width 100%
+
+				&:hover
+					border-bottom solid rgba(0,0,0,0.7) 3px
+
+section
+	//height 100vh
+	position relative
+
+.git
+	color rgba(0,0,0,0.3)
+	font-family: 'Open Sans', sans-serif;
+	text-decoration none
+
+	.author
+		color rgba(0,0,0,0.3)
+		float right
+		font-family 'iconreg'
+		font-size .9em	
+		padding-right 1em
+
+		&:before
+			content "-"
+			font-size 1.3em
+
+		&:after
+			content "-  \e602"
+			font-size 1.3em
+
+.sobremi
+	height 100%
+	//overflow-y auto
+	
+	figure
+		margin 0 
+		max-width 195px
+		padding 0.6em 1em 0 0
+		float left
+
+		img
+			border-radius 0.25em
+			box-shadow 0px 0px 10px rgba(0,0,0,0.3)
+			width 100%
+
+	article
+		margin 0
+		padding 0
+
+	figure
+	article
+		vertical-align top
+
+.lector
+	height 100vh
+
+	.comments
+		box-shadow -0.8px 6px 5px rgba(0,0,0,0.06)
+		margin-top 40px
+		padding-bottom 30px
+		
+		.comment
+			font-size 1.4em
+
+		h4
+		time
+			display inline-block
+			vertical-align top
+
+		h4
+			&:before
+				content "—  "
+
+		time
+			margin-top 1.33em
+
+		.lover
+				text-decoration none
+				
+			.love
+				float right
+				margin-top 3em
+				color rgba(black,.5)
+
+				&:after
+					content "    \e603"
+					font-family 'iconreg'
+					font-size 2em
+
+				&:hover
+					color rojo
+
+	.aviso
+		margin-top 140px
+		
+	.largo
+
+		.submit
+			width 100%
+			background rojo
+			border 0
+			color white
+			font-weight 200
+			font-size 1.3em
+			margin 1em auto 0 auto
+			padding 10px 0
+			position relative
+			border-radius 5px
+
+			&:before
+				color black
+				content "\e600"
+				font-family 'iconreg'
+				font-size 3.5em
+				position absolute
+				top -.2em
+				left -4px
+	
+	.cerrarSesion
+		font-size 0.75em
+		text-align center
+
+		a
+			color rojo
+			text-decoration none
+
+	.formulario
+		margin-top 140px
+
+		.aviso
+			font-size 1em
+			text-align center
+
+		.olvido
+			font-size 0.75em
+			a
+				color rojo
+				text-decoration none
+
+		span
+			max-width 590px
+
+			.recuerdame
+				margin-right 1em
+				width auto
+
+			input
+			textarea
+				padding 14px 10px
+				border 1px solid #eeeeee
+				color #ABADB7
+				background-color #eeeeee
+				width 95%
+				margin 8px 0
+				border-radius 5px
+
+			.button
+				background rgba(255,255,255,0.2)
+				border 2px solid rojo
+				border-radius 0
+				color rojo
+				font-weight 200
+				margin 1em auto 0 auto
+				padding 6px
+				position relative
+				width 200px
+				border-radius 5px
+				text-decoration none
+
+			.submit
+				background rojo
+				border 0
+				border-radius 0
+				color white
+				font-weight 200
+				margin 1em auto 0 auto
+				padding 6px
+				position relative
+				width 200px
+				border-radius 5px
+
+			.pluma
+				float right
+
+				&:before
+					color black
+					content "\e600"
+					font-family 'iconreg'
+					font-size 3.5em
+					position absolute
+					top -.2em
+					left -4px
+
+.libros
+	background #222 url("../img/blur.jpg") center  no-repeat
+	background-size 100% auto
+	background-size cover
+	height 100vh
+	overflow-y auto
+	padding-top 80px
+	text-align center
+
+	.container
+		background rgba(255,255,255,0.5)
+		border-radius 0.5em
+		margin 0 8px 15px 8px
+		overflow-y auto
+		padding-bottom 16px
+
+		.books-list
+			position relative
+			float left
+
+			span
+				height 270px
+				width 180px
+				display block
+				background url("../img/lomo-small.png") no-repeat
+				background-size 196px 290px
+				z-index 2
+				padding 36px 0 0 16px
+				position relative
+				float left
+				
+			.cover
+				display block
+				height 250px
+				width 166px
+				z-index 1
+				border-color #F0F0F0
+				outline-color #F0F0F0
+				position absolute
+				top 36px
+				left 16px
+
+			a
+				display block
+				height 250px
+				width 166px
+				position absolute
+				top 36px
+				left 16px
+				z-index 3
+
+	.content
+		padding-top 36px
+		margin 0 8px
+		text-align left
+
+		h3
+			color rgba(black,.7)
+			font-size 1.5em
+			margin-top 0
+			padding-top 0
+			padding-bottom .5em
+			text-align center
+
+.nav--clone
+	position fixed
+	top 0
+	left 0
+	width 100%
+	line-height 29px
+	overflow-x auto
+	text-align center
+	white-space nowrap
+	z-index 100
+	/*transition -100%*/
+	transform translateY(-100%)
+	/*animation*/
+	transition all 300ms ease-in-out
+
+.nav--stick
+	transform translateY(0%)
+
+.notas
+	height 100vh
+
+	article
+		h2
+			color rojo
+
+		time
+
+			&:after
+				content "    —"
+
+		.texto
+			margin-top 1em
+			text-align left
+
+		.lover
+			text-decoration none
+
+			.love
+				color rgba(black,.5)
+				float right
+				padding-top 1em
+
+				&:after
+					content "    \e603"
+					font-family 'iconreg'
+					font-size 2em
+
+				&:hover
+					color rojo
+
+.sobremi
+.lector
+.notas
+	margin 0 auto 4em auto
+	max-width 590px
+	padding 70px 0.5em 0 0.5em
+
+.scroll-nav
+	overflow hidden
+	width 0px
+	height 0px
+
+.formPublicar
+	height 100%
+	padding-bottom 240px
+	.formulario
+		margin-top 0px
+
+@media screen and (min-width: 768px)
+
+	.libros
+		.container
+			display inline-block
+			vertical-align top
+			width 550px
+			height 500px
+
+
+

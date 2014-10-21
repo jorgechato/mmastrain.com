@@ -33,7 +33,7 @@ class NotasAdmin(admin.ModelAdmin):
     pintar_love.admin_order_field = 'votos'
 
 class LectorAdmin(admin.ModelAdmin):
-    list_display = ('es_popular','usuario','tymestamp', 'pintar_love',)
+    list_display = ('es_popular','usuario','comentario','tymestamp', 'pintar_love',)
     list_filter = ('usuario','tymestamp',)
     search_fields = ['usuario__username']
     list_display_links = ('usuario',)

@@ -7,26 +7,26 @@ from server.settings import STATIC_URL
 
 class SobreMi(models.Model):
     imagen = models.ImageField(upload_to = 'img')
-    descripcion = models.CharField(max_length = 10000)
-    descripcionFin = models.CharField(max_length = 10000)
+    descripcion = models.TextField(max_length = 10000)
+    descripcionFin = models.TextField(max_length = 10000, blank = True)
 
 class Libros(models.Model):
     titulo = models.CharField(max_length = 140)
-    sinopsis = models.CharField(max_length = 900)
+    sinopsis = models.TextField(max_length = 900)
     imagen = models.ImageField(upload_to = 'img/covers')
-    url = models.URLField()
+    link = models.URLField()
 
     def __unicode__(self):
         return self.titulo
 
     def mostrar_cover_en_admin(self):
-        #return "http://127.0.0.1:8000/ %s" % self.imagen
+        #return self.imagen.url
         return "http://placehold.it/166x250/000/fff&text=%s" % self.titulo
 
 class Notas(models.Model):
     titulo = models.CharField(max_length = 140)
-    comentario = models.CharField(max_length = 600)
-    votos = models.IntegerField(default = 0)
+    comentario = models.TextField(max_length = 600)
+    votos = models.PositiveIntegerField(default = 0)
     tymestamp = models.DateTimeField(auto_now_add = True)
 
     def __unicode__(self):
@@ -40,8 +40,8 @@ class Notas(models.Model):
 
 class Lector(models.Model):
     usuario = models.ForeignKey(User)
-    comentario = models.CharField(max_length = 140)
-    votos = models.IntegerField(default = 0)
+    comentario = models.TextField(max_length = 140)
+    votos = models.PositiveIntegerField(default = 0)
     tymestamp = models.DateTimeField(auto_now_add = True)
 
     def __unicode__(self):
