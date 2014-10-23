@@ -1,13 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
-# from datetime import datetime
-from django.shortcuts import render,render_to_response, get_object_or_404
 from rest_framework import viewsets
-from app.serializers import LibrosSerializer, UserSerializer, NotasSerializer, LectorSerializer
-# from models import *
 from forms import *
+from .forms import CrearUser,AutenticarPorEmail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render,render_to_response, get_object_or_404
+from app.serializers import LibrosSerializer, UserSerializer, NotasSerializer, LectorSerializer
 from django.template.context import RequestContext
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-# from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 
 
 # Create your views here.
@@ -19,7 +19,14 @@ def home(request):
     lectores = Lector.objects.order_by("-votos").all()
     template = "index.html"
 
-    return render_to_response(template,locals())
+    #form = AutenticarPorEmail(request.POST or None)
+    form = AuthenticationForm(data=request.POST or None)
+
+    if form.is_valid():
+        login(request, form.get_user())
+        return HttpResponseRedirect("/#reader")
+
+    return render_to_response(template,context_instance = RequestContext(request,locals()))
 
 def loveE(request,id_notas):
     nota = get_object_or_404(Notas, pk = id_notas)
@@ -27,7 +34,7 @@ def loveE(request,id_notas):
     nota.votos = nota.votos + 1
     nota.save()
 
-    return HttpResponseRedirect("/#notes")
+    return HttpResponse("/#notes")
 
 @login_required
 def loveL(request,id_lector):
@@ -52,7 +59,19 @@ def add(request):
     template = "form.html"
     return render_to_response(template,context_instance = RequestContext(request,locals()))
 
-#crear apide libros
+
+def singup(request):
+    form = CrearUser(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        # TODO logear usuario
+
+        return HttpResponseRedirect("/#reader")
+
+    return render(request,'singup.html',{'form':form})
+
+#crear api
 
 class LibrosViewSet(viewsets.ModelViewSet):
     queryset = Libros.objects.all()
@@ -69,3 +88,4 @@ class NotasViewSet(viewsets.ModelViewSet):
 class LectorViewSet(viewsets.ModelViewSet):
     queryset = Lector.objects.all()
     serializer_class = LectorSerializer
+

@@ -4,9 +4,9 @@ from actions import export_as_csv
 
 # Register your models here.
 class LibrosAdmin(admin.ModelAdmin):
-    list_display = ('titulo','sinopsis','url','pintar_cover',)
+    list_display = ('titulo','sinopsis','link','pintar_cover',)
     search_fields = ['titulo',]
-    list_editable = ('titulo', 'sinopsis', 'url',)
+    list_editable = ('titulo', 'sinopsis', 'link',)
     list_display_links = ('pintar_cover',)
     actions = [export_as_csv]
 

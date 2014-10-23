@@ -1,7 +1,7 @@
 hacer bbdd django:
 
 1-	python manage.py syncdb
-2-	python manage.py sqlmigrate app 001
+2-	python manage.py sqlmigrate app 0001
 3-	python manage.py makemigrations app
 4-	python manage.py sqlmigrate app 0001
 5-	python manage.py syncdb

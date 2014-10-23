@@ -102,22 +102,18 @@
 			    NO HAY COMENTARIOS GUARDADOS
 			{% endif %}
 		{% if not request.user.is_authenticated %}
-		<form class="formulario" method="POST">
+		<form class="formulario" method="post">
 			<p class="aviso">Registrate para comentar y votar a tus compañeros</p>
 			<span>
-			{% csrf_token %}
+			    {% csrf_token %}
+				{{ form.as_p }}
+                <input class="recuerdame" type="checkbox" name="remember" value="remember"/>Recuerdame</br>
 
-				<input type="text" name="username" id="comment-name" required="" placeholder="Tu nombre"/>
+				<button class="submit" type="submit" name="submit" value="Submit">Iniciar sesión</button>
 
-				<input type="password" name="password" id="comment-password" required="" placeholder="Tu contraseña"/>
-
-				<input class="recuerdame" type="checkbox" name="remember" value="remember"/>Recuerdame</br>
-
-				<button class="submit" type="submit" name="submit" value="Publicar">Iniciar sesión</button>
-
-				<a href=""><button class="button" type="button" name="button" value="Publicar">Registrarme</button></a>
+				<a href="/singup"><button class="button" type="button" name="button" value="Publicar">Registrarme</button></a>
 			</span>
-			<p class="olvido">*Si has olvidado la contraseña, <a href=""><strong>RECUPERALA</strong></a></p>
+			<p class="olvido">*Si has olvidado la contraseña, <a href="/password_change"><strong>RECUPERALA</strong></a></p>
 		</form>
 		{% else %}
 			<p class="aviso"></p>

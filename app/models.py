@@ -14,7 +14,7 @@ class Libros(models.Model):
     titulo = models.CharField(max_length = 140)
     sinopsis = models.TextField(max_length = 900)
     imagen = models.ImageField(upload_to = 'img/covers')
-    link = models.URLField()
+    link = models.URLField(blank = True)
 
     def __unicode__(self):
         return self.titulo
