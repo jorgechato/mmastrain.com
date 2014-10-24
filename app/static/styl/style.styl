@@ -9,7 +9,14 @@
 	font-style: normal;
 }
 
-rojo=rgb(187,36,42)
+rojo = rgb(187,36,42)
+rojoFuerte = #841e25
+gris = #e0e0e0
+grisFuerte = #c9c8c7
+twitter = rgb(44,218,192)
+twitterFuerte = rgb(7,162,165)
+facebook = rgb(31,111,198)
+facebookFuerte = rgb(62,67,89)
 
 border-radius()
 	-webkit-border-radius arguments
@@ -206,14 +213,20 @@ section
 		.submit
 			width 100%
 			background rojo
-			border 0
+			border none
 			color white
 			font-weight 200
 			font-size 1.3em
 			margin 1em auto 0 auto
 			padding 10px 0
 			position relative
-			border-radius 5px
+			border-radius .4em
+			box-shadow 0 .44em rojoFuerte
+			letter-spacing: 1px;
+
+			&:hover
+				box-shadow 0 .3em rojoFuerte
+				top .16em
 
 			&:before
 				color black
@@ -247,6 +260,7 @@ section
 
 		span
 			max-width 590px
+			position relative
 
 			.recuerdame
 				margin-right 1em
@@ -266,32 +280,49 @@ section
 				height 3em
 
 			.button
-				background rgba(255,255,255,0.2)
-				border 2px solid rojo
-				border-radius 0
+				background gris
+				border none
 				color rojo
-				font-weight 200
+				font-weight 700
 				margin 1em auto 0 auto
 				padding 6px
 				position relative
 				width 200px
 				border-radius 5px
+				box-shadow 0 6px grisFuerte
 				text-decoration none
+				letter-spacing: 1px;
+				text-transform: uppercase;
+
+				&:hover
+					box-shadow 0 4px grisFuerte
+					top: 2px
 
 			.submit
 				background rojo
-				border 0
-				border-radius 0
+				border none
 				color white
-				font-weight 200
+				font-weight 700
 				margin 1em auto 0 auto
 				padding 6px
 				position relative
 				width 200px
 				border-radius 5px
+				box-shadow 0 6px rojoFuerte
+				letter-spacing: 1px;
+				text-transform: uppercase;
 
+				&:hover
+					box-shadow 0 4px rojoFuerte
+					top: 2px
+			
 			.pluma
 				float right
+				letter-spacing: 1px;
+
+				&:hover
+					box-shadow 0 4px rojoFuerte
+					margin-top 18px
 
 				&:before
 					color black
@@ -431,8 +462,50 @@ section
 .formPublicar
 	height 100%
 	padding-bottom 240px
+
 	.formulario
 		margin-top 0px
+
+		a
+			color: #bb242a;
+			text-decoration: none;
+			font-weight: 700;
+
+.facebook
+	background facebook
+	border none
+	color white
+	font-weight 700
+	margin 1em auto 0 auto
+	padding 6px
+	position relative
+	width 49%
+	border-radius 5px
+	box-shadow 0 6px facebookFuerte
+	letter-spacing: 1px;
+	text-transform: uppercase;
+
+	&:hover
+		box-shadow 0 4px facebookFuerte
+		top: 2px
+
+.twitter
+	background twitter
+	border none
+	color white
+	font-weight 700
+	margin 1em auto 0 auto
+	padding 6px
+	position relative
+	width 49%
+	border-radius 5px
+	box-shadow 0 6px twitterFuerte
+	letter-spacing: 1px;
+	text-transform: uppercase;
+
+	&:hover
+		box-shadow 0 4px twitterFuerte
+		top: 2px
 
 @media screen and (min-width: 768px)
 

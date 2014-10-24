@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('titulo', models.CharField(max_length=140)),
                 ('sinopsis', models.TextField(max_length=900)),
                 ('imagen', models.ImageField(upload_to=b'img/covers')),
-                ('link', models.URLField()),
+                ('link', models.URLField(blank=True)),
             ],
             options={
             },

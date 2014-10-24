@@ -40,10 +40,10 @@
 
                 <button class="submit" type="submit" name="submit" value="singup">Registrarme</button>
 				<p>O registrate por:</p>
+				<a href=""><button class="facebook" name="submit" value="singup">Facebook</button></a>
+				<a href=""><button class="twitter" name="submit" value="singup">Twitter</button></a>
 			</span>
-            </form>
-            <a href="{% url 'social:begin' "facebook" %}"><button class="facebook" name="submit" value="singup">Facebook</button></a>
-            <a href="{% url 'social:begin' "twitter" %}"><button class="twitter" name="submit" value="singup">Twitter</button></a>
+		</form>
         {% endif %}
     </section>
 	<a href="//github.com/orggue/mmastrain.com" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>

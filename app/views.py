@@ -1,11 +1,11 @@
 from rest_framework import viewsets
 from forms import *
-from .forms import CrearUser,AutenticarPorEmail
+from .forms import CrearUser
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,render_to_response, get_object_or_404
 from app.serializers import LibrosSerializer, UserSerializer, NotasSerializer, LectorSerializer
 from django.template.context import RequestContext
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -65,8 +65,9 @@ def singup(request):
 
     if form.is_valid():
         form.save()
-        # TODO logear usuario
-
+        # login new user
+        formLogin = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+        login(request, formLogin)
         return HttpResponseRedirect("/#reader")
 
     return render(request,'singup.html',{'form':form})

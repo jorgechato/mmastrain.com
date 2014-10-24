@@ -113,12 +113,12 @@
 
 				<a href="/singup"><button class="button" type="button" name="button" value="Publicar">Registrarme</button></a>
 			</span>
-			<p class="olvido">*Si has olvidado la contraseña, <a href="/password_change"><strong>RECUPERALA</strong></a></p>
+			<p class="olvido">*Si has olvidado la contraseña, <a href="/resetPassword"><strong>RECUPERALA.</strong></a></p>
 		</form>
 		{% else %}
 			<p class="aviso"></p>
 
-			<a href="/add" class="largo"><button class="submit pluma" type="submit" name="submit" value="Publicar">Hola <strong>{{request.user|title}}</strong>, ¿Listo para publicar?</button></a>
+			<a href="/add" class="largo"><button class="submit" type="submit" name="submit" value="Publicar">Hola <strong>{{request.user|title}}</strong>, ¿Listo para publicar?</button></a>
 
 			<p class="cerrarSesion"><a href="/logout">Cerrar sesión</a></p>
 		{% endif %}

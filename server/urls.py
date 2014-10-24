@@ -11,7 +11,6 @@ router.register(r'notas', NotasViewSet)
 router.register(r'lector', LectorViewSet)
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'app.views.home', name='home'),
     url(r'^loveE/(\d+)$', 'app.views.loveE', name='loveE'),
     url(r'^loveL/(\d+)$', 'app.views.loveL', name='loveL'),
@@ -20,9 +19,9 @@ urlpatterns = patterns('',
 
     url(r'^api/', include(router.urls),name = 'api'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # url(r'^blog/', include('blog.urls')),
-    # url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^social/',include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^logout/$', views.logout, name='logout'),
 )
