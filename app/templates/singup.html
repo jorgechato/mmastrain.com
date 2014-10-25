@@ -35,11 +35,11 @@
 
                 {% csrf_token %}
 				{{ form.as_p }}
-                <input class="recuerdame" type="checkbox" name="remember" value="remember"/>Si creas el usuario estás de acuerdo con nuestros <a
-                    href="">Términos de Servicio</a> y nuestra <a href="">Política de Privacidad.</a></br>
+                <li class="recuerdame">Si creas el usuario estarás de acuerdo con nuestros <a
+                    href="/archivolegal/#aviso">Términos de Servicio</a> y nuestra <a href="/archivolegal/#privacidad">Política de Privacidad.</a></li>
 
                 <button class="submit" type="submit" name="submit" value="singup">Registrarme</button>
-				<p>O registrate por:</p>
+				<p>También te puedes registrar por:</p>
 			</span>
             </form>
             <a href="{% url 'social:begin' "facebook" %}"><button class="facebook" name="submit" value="singup">Facebook</button></a>
@@ -47,6 +47,7 @@
         {% endif %}
     </section>
 	<a href="//github.com/orggue/mmastrain.com" class="git"><span class="author">Powered by <strong>JORGE CHATO</strong></span></a>
+    <a href="/archivolegal/#coockies" class="coockies">Política de cookies</a>
 
     <footer>
         <a href="//www.amazon.com/s/ref=la_B00JJ5FR1Y_B00JJ5FR1Y_sr?rh=i%3Abooks&field-author=Miguel+Mª+Astra%C3%ADn&sort=relevance&ie=UTF8&qid=1410275844"><span class="amazon"><img src="{% static "img/amazon_white.png" %}"></span></a>

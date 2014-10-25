@@ -5,6 +5,7 @@ from models import *
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+from captcha.fields import CaptchaField
 
 class LectorForm(ModelForm):
     class Meta:
@@ -13,11 +14,29 @@ class LectorForm(ModelForm):
 
 class CrearUser(UserCreationForm):
     email = forms.EmailField()
+    captcha = CaptchaField()
     class Meta:
         model = User
         fields = ('username','email')
+
     # TODO validar con el email
-    # def clean_email(self):
+    # comprobar si el email esta en uso
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        try:
+            User._default_manager.get(email=email)
+        except User.DoesNotExist:
+            return email
+        raise forms.ValidationError('Ya hay un usuario registrado con este mismo email')
+    # usuario inactivo hasta que valide con email
+    def save(self, commit=True):
+        user = super(CrearUser, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.is_active = False
+            user.save()
+
+        return user
 
 
 class AutenticarPorEmail(forms.Form):

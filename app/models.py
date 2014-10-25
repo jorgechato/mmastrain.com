@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -20,8 +21,8 @@ class Libros(models.Model):
         return self.titulo
 
     def mostrar_cover_en_admin(self):
-        #return self.imagen.url
-        return "http://placehold.it/166x250/000/fff&text=%s" % self.titulo
+        return self.imagen.url
+        # return "http://placehold.it/166x250/000/fff&text=%s" % self.titulo
 
 class Notas(models.Model):
     titulo = models.CharField(max_length = 140)
@@ -53,3 +54,14 @@ class Lector(models.Model):
     def es_popular(self):
         return self.votos > 10
     es_popular.boolean = True
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    activation_key = models.CharField(max_length = 40, blank = True)
+    key_expires = models.DateTimeField(default=datetime.date.today())
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name_plural = u'User profiles'
