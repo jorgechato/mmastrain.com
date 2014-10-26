@@ -14,7 +14,7 @@ from django.db.models.lookups import IsNull
 from django.db.models.related import RelatedObject, PathInfo
 from django.db.models.query import QuerySet
 from django.db.models.sql.datastructures import Col
-from django.utils.encoding import smart_text
+from django.utils.encoding import force_text, smart_text
 from django.utils import six
 from django.utils.deprecation import RenameMethodsBase, RemovedInDjango18Warning
 from django.utils.translation import ugettext_lazy as _
@@ -715,12 +715,16 @@ def create_foreign_related_manager(superclass, rel_field, rel_model):
         create.alters_data = True
 
         def get_or_create(self, **kwargs):
-            # Update kwargs with the related object that this
-            # ForeignRelatedObjectsDescriptor knows about.
             kwargs[rel_field.name] = self.instance
             db = router.db_for_write(self.model, instance=self.instance)
             return super(RelatedManager, self.db_manager(db)).get_or_create(**kwargs)
         get_or_create.alters_data = True
+
+        def update_or_create(self, **kwargs):
+            kwargs[rel_field.name] = self.instance
+            db = router.db_for_write(self.model, instance=self.instance)
+            return super(RelatedManager, self.db_manager(db)).update_or_create(**kwargs)
+        update_or_create.alters_data = True
 
         # remove() and clear() are only provided if the ForeignKey can have a value of null.
         if rel_field.null:
@@ -963,14 +967,23 @@ def create_many_related_manager(superclass, rel):
 
         def get_or_create(self, **kwargs):
             db = router.db_for_write(self.instance.__class__, instance=self.instance)
-            obj, created = \
-                super(ManyRelatedManager, self.db_manager(db)).get_or_create(**kwargs)
+            obj, created = super(ManyRelatedManager, self.db_manager(db)).get_or_create(**kwargs)
             # We only need to add() if created because if we got an object back
             # from get() then the relationship already exists.
             if created:
                 self.add(obj)
             return obj, created
         get_or_create.alters_data = True
+
+        def update_or_create(self, **kwargs):
+            db = router.db_for_write(self.instance.__class__, instance=self.instance)
+            obj, created = super(ManyRelatedManager, self.db_manager(db)).update_or_create(**kwargs)
+            # We only need to add() if created because if we got an object back
+            # from get() then the relationship already exists.
+            if created:
+                self.add(obj)
+            return obj, created
+        update_or_create.alters_data = True
 
         def _add_items(self, source_field_name, target_field_name, *objs):
             # source_field_name: the PK fieldname in join table for the source object
@@ -1363,7 +1376,7 @@ class ForeignObject(RelatedField):
         kwargs['from_fields'] = self.from_fields
         kwargs['to_fields'] = self.to_fields
         if self.rel.related_name is not None:
-            kwargs['related_name'] = self.rel.related_name
+            kwargs['related_name'] = force_text(self.rel.related_name)
         if self.rel.related_query_name is not None:
             kwargs['related_query_name'] = self.rel.related_query_name
         if self.rel.on_delete != CASCADE:
@@ -2099,7 +2112,7 @@ class ManyToManyField(RelatedField):
         if self.rel.db_constraint is not True:
             kwargs['db_constraint'] = self.rel.db_constraint
         if self.rel.related_name is not None:
-            kwargs['related_name'] = self.rel.related_name
+            kwargs['related_name'] = force_text(self.rel.related_name)
         if self.rel.related_query_name is not None:
             kwargs['related_query_name'] = self.rel.related_query_name
         # Rel needs more work.

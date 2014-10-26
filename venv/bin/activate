@@ -39,7 +39,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/jorge/GitHub/mmastrain.com/venv"
+VIRTUAL_ENV="/Users/jorge/Desktop/Produccion/mmastrain/mmastrain/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,6 +1,7 @@
 import datetime
 from django.contrib.auth.models import User
 from django.db import models
+from sorl.thumbnail import get_thumbnail
 
 # Create your models here.
 from server.settings import STATIC_URL
@@ -16,12 +17,14 @@ class Libros(models.Model):
     sinopsis = models.TextField(max_length = 900)
     imagen = models.ImageField(upload_to = 'img/covers')
     link = models.URLField(blank = True)
+    tymestamp = models.DateTimeField(auto_now_add = True)
+    boton = models.CharField(max_length = 140)
 
     def __unicode__(self):
         return self.titulo
 
     def mostrar_cover_en_admin(self):
-        return self.imagen.url
+        return get_thumbnail(self.imagen, '166x250').url
         # return "http://placehold.it/166x250/000/fff&text=%s" % self.titulo
 
 class Notas(models.Model):
@@ -65,3 +68,15 @@ class UserProfile(models.Model):
 
     class Meta:
         verbose_name_plural = u'User profiles'
+
+from django.core.cache import cache
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from django.contrib.sessions.models import Session
+
+
+@receiver(post_save)
+def clear_cache(sender, **kwargs):
+    if sender != Session:
+        cache.clear()

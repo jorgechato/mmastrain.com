@@ -413,7 +413,10 @@ class BaseModelAdmin(six.with_metaclass(RenameBaseModelAdminMethods)):
                     # since it's ignored in ChangeList.get_filters().
                     return True
                 model = field.rel.to
-                rel_name = field.rel.get_related_field().name
+                if hasattr(field.rel, 'get_related_field'):
+                    rel_name = field.rel.get_related_field().name
+                else:
+                    rel_name = None
             elif isinstance(field, RelatedObject):
                 model = field.model
                 rel_name = model._meta.pk.name
@@ -436,6 +439,10 @@ class BaseModelAdmin(six.with_metaclass(RenameBaseModelAdminMethods)):
         return clean_lookup in valid_lookups
 
     def to_field_allowed(self, request, to_field):
+        """
+        Returns True if the model associated with this admin should be
+        allowed to be referenced by the specified field.
+        """
         opts = self.model._meta
 
         try:
@@ -443,10 +450,20 @@ class BaseModelAdmin(six.with_metaclass(RenameBaseModelAdminMethods)):
         except FieldDoesNotExist:
             return False
 
+        # Check whether this model is the origin of a M2M relationship
+        # in which case to_field has to be the pk on this model.
+        if opts.many_to_many and field.primary_key:
+            return True
+
         # Make sure at least one of the models registered for this site
         # references this field through a FK or a M2M relationship.
-        registered_models = self.admin_site._registry
-        for related_object in (opts.get_all_related_objects() +
+        registered_models = set()
+        for model, admin in self.admin_site._registry.items():
+            registered_models.add(model)
+            for inline in admin.inlines:
+                registered_models.add(inline.model)
+
+        for related_object in (opts.get_all_related_objects(include_hidden=True) +
                                opts.get_all_related_many_to_many_objects()):
             related_model = related_object.model
             if (any(issubclass(model, related_model) for model in registered_models) and

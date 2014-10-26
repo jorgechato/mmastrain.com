@@ -1,4 +1,4 @@
-#!/Users/jorge/GitHub/mmastrain.com/venv/bin/python
+#!/Users/jorge/Desktop/Produccion/mmastrain/mmastrain/venv/bin/python
 from django.core import management
 
 if __name__ == "__main__":

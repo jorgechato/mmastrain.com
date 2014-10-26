@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.conf import settings
+import datetime
 
 
 class Migration(migrations.Migration):
@@ -33,6 +34,8 @@ class Migration(migrations.Migration):
                 ('sinopsis', models.TextField(max_length=900)),
                 ('imagen', models.ImageField(upload_to=b'img/covers')),
                 ('link', models.URLField(blank=True)),
+                ('tymestamp', models.DateTimeField(auto_now_add=True)),
+                ('boton', models.CharField(max_length=140)),
             ],
             options={
             },
@@ -60,6 +63,19 @@ class Migration(migrations.Migration):
                 ('descripcionFin', models.TextField(max_length=10000, blank=True)),
             ],
             options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='UserProfile',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('activation_key', models.CharField(max_length=40, blank=True)),
+                ('key_expires', models.DateTimeField(default=datetime.date(2014, 10, 26))),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name_plural': 'User profiles',
             },
             bases=(models.Model,),
         ),
