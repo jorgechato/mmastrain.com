@@ -18,7 +18,7 @@ class Libros(models.Model):
     imagen = models.ImageField(upload_to = 'img/covers')
     link = models.URLField(blank = True)
     tymestamp = models.DateTimeField(auto_now_add = True)
-    boton = models.CharField(max_length = 140)
+    boton = models.CharField(max_length = 140, blank = True)
 
     def __unicode__(self):
         return self.titulo
@@ -32,6 +32,7 @@ class Notas(models.Model):
     comentario = models.TextField(max_length = 600)
     votos = models.PositiveIntegerField(default = 0)
     tymestamp = models.DateTimeField(auto_now_add = True)
+    imagen = models.ImageField(upload_to = 'img/notas')
 
     def __unicode__(self):
         return self.titulo
@@ -68,7 +69,7 @@ class UserProfile(models.Model):
 
     class Meta:
         verbose_name_plural = u'User profiles'
-
+"""
 from django.core.cache import cache
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -79,4 +80,4 @@ from django.contrib.sessions.models import Session
 @receiver(post_save)
 def clear_cache(sender, **kwargs):
     if sender != Session:
-        cache.clear()
+        cache.clear()"""

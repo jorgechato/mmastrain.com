@@ -17,6 +17,7 @@ twitter = rgb(44,218,192)
 twitterFuerte = rgb(7,162,165)
 facebook = rgb(31,111,198)
 facebookFuerte = rgb(62,67,89)
+naranja = rgb(253,159,35)
 
 border-radius()
 	-webkit-border-radius arguments
@@ -393,7 +394,7 @@ section
 				z-index 3
 
 	.content
-		padding-top 36px
+		padding-top 29px
 		margin 0 8px
 		text-align left
 
@@ -402,8 +403,27 @@ section
 			font-size 1.5em
 			margin-top 0
 			padding-top 0
-			padding-bottom .5em
 			text-align center
+
+		a
+			.amazon
+				background rgb(35,31,32)
+				border none
+				color #fff
+				font-weight 700
+				margin 1.8em auto 0 auto
+				padding 6px
+				position relative
+				width 100%
+				border-radius 5px
+				box-shadow: 0 6px naranja;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+
+				&:hover
+					box-shadow: 0 4px naranja;
+					top: 2px
+
 
 .nav--clone
 	position fixed
@@ -422,6 +442,42 @@ section
 
 .nav--stick
 	transform translateY(0%)
+
+.novedades
+	.mail
+		text-align: center;
+		color: #302f2f;
+		padding: 1.25em;
+		border: 5px dashed #4a88f4;
+		box-sizing: border-box;
+		p
+			margin-bottom:1.25em
+		input
+			padding 14px 10px
+			border 1px solid #eeeeee
+			color #ABADB7
+			background-color #eeeeee
+			width 95%
+			margin 8px 0
+			border-radius 5px
+		a
+			button
+				background rojo
+				border none
+				color white
+				font-weight 700
+				margin 1em auto 0 auto
+				padding 6px
+				position relative
+				width 200px
+				border-radius 5px
+				box-shadow 0 6px rojoFuerte
+				letter-spacing: 1px;
+				text-transform: uppercase;
+
+				&:hover
+					box-shadow 0 4px rojoFuerte
+					top: 2px
 
 .notas
 	height 100%
@@ -522,7 +578,19 @@ section
 			display inline-block
 			vertical-align top
 			width 550px
-			height 500px
+			height 400px
 
+		.content
+			a
+				.amazon
+					margin-left 200px
+					width 49%
+
+@media screen and (min-width: 1280px)
+	.novedades
+		max-width 300px
+		float right
+		margin-top 80px
+		margin-right 8px
 
 

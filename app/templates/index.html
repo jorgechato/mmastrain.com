@@ -58,7 +58,8 @@
 				<div class="sinopsis">
 					{{libro.sinopsis}}
 				</div>
-				<button></button>
+					<a href="{{libro.url}}"><button class="amazon">{% if libro.boton == "amazon" %}{{ libro.boton }}{% elif libro.boton == "twitter" %}paga con un tweet{% endif %}</button></a>
+				
 			</article>
 		</div>
 			{% endfor %}
@@ -67,9 +68,19 @@
 			{% endif %}
 	</section>
 
+	<div class="novedades">
+		<form method="post">
+			<div class="mail">
+				<p>Suscríbete y sigue las novedades</p>
+				<input required="required" placeholder="Escribe tu Correo Electrónico" name="EMAIL" type="email">
+				<a href=""><button>suscribirse</button></a>
+			</div>
+		</form>
+	</div>
+
 	<main class="notas" id="notes">
 		{% if notas %}
-		{% for nota in notas %}
+		{% for nota in notas|slice:"7" %}
 		<article>
 
 			<h2>{{nota.titulo|upper}}</h2>

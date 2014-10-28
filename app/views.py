@@ -108,10 +108,6 @@ def register_confirm(request, activation_key):
     user.is_active = True
     user.save()
 
-    # login new user
-    # formLogin = authenticate(username=user.username, password=user.password)
-    # login(request, formLogin)
-
     return render_to_response('confirm.html')
 
 #crear api
